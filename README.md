@@ -1,2 +1,2 @@
 # Movie Rater
-A simple online movie rating project, created for Django and React practicing purposes.
+A simple movie rating site, created for React/Django practicing purposes.

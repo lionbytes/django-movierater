@@ -20,12 +20,20 @@ class Movie(models.Model):
             return sum / len(ratings)
         else:
             return 0
+    
+    def __str__(self) -> str:
+      return self.title
+    
 
 class Rating(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     stars = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
 
+    def __str__(self) -> str:
+      starchar = "★" * self.stars 
+      return f"{self.movie} {starchar}  –  by {self.user}"
+    
     class Meta:
         unique_together = (('user', 'movie'),)
         index_together = (('user', 'movie'),)
